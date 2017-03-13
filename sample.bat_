@@ -1,0 +1,33 @@
+rem カレントに移動
+SET STR=%~dp0
+cd %STR%
+
+rem ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+rem sample1
+rem 文字列「2017」を文字列「2016」に置換
+cscript regex.vbs ".\sample\sample1.txt"  "2017" "2016"
+
+rem ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+rem sample2
+rem メタ文字
+rem 「行頭の数字」を文字列「数値」に置換
+cscript regex.vbs ".\sample\sample2.txt"  "^\d" "数値"
+
+rem ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+rem sample3
+rem 繰り返し表現
+rem IP部分を「xxx.xxx.xxx.xxx」に置換
+cscript regex.vbs ".\sample\sample3.txt"  "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" "xxx.xxx.xxx.xxx"
+
+rem ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+rem sample4
+rem 最少一致
+rem 行頭から２つめのタブまでを空文字に置換
+cscript regex.vbs ".\sample\sample4.txt"  "^.*?\t.*?\t" ""
+rem ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+rem sample5
+rem 後方参照
+rem 行頭がAのIP部分のみを「xxx.xxx.xxx.xxx」に置換
+cscript regex.vbs ".\sample\sample5.txt"  "^(A\t.*?\t).*" "$1xxx.xxx.xxx.xxx"
+rem ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
